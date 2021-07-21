@@ -3,8 +3,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// 清除构建目录的插件
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -13,7 +11,6 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        // 增加js的文件指纹
         filename: '[name].js'
     },
     mode: 'development',
@@ -84,10 +81,8 @@ module.exports = {
                 minifyJS: true,
                 removeComments: false
             }
-        }),
-        new CleanWebpackPlugin(), 
+        })  
     ],
-    // 代码热更新配置
     devServer: {
         contentBase: './dist',
         hot: true
